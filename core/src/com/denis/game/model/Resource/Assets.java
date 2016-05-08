@@ -23,7 +23,7 @@ public class Assets {
     public static boolean isFinishBlockBroke = false;
     public static boolean isPlayerHaveBeated = false;
     public static int map = 1;
-    public static final int lastMap = 3;
+    public static final int lastMap = 4;
     public static int howManyBalls = 0;
     public static int maxBalls = 5;
     public static int ballsCount = 0;

@@ -10,5 +10,9 @@
     {
         "merged": "C:\\Users\\DNS\\Desktop\\Game Builds\\Build v_0.11\\android\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\DNS\\Desktop\\Game Builds\\Build v_0.11\\android\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\DNS\\Desktop\\GitProjects\\Square-Story\\android\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\DNS\\Desktop\\GitProjects\\Square-Story\\android\\res\\drawable-hdpi\\ic_launcher.png"
     }
 ]
