@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="128" height="13" tilewidth="16" tileheight="16" nextobjectid="7">
+ <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924">
+  <image source="tileset_gutter.png" trans="ff00ff" width="594" height="504"/>
+ </tileset>
+ <layer name="background" width="128" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMA6Dx/oXWbj2Ogr2kqqqqqqqqvjmqmr+9
+  </data>
+ </layer>
+ <layer name="graphics" width="128" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt0QEJADEQwLBj/n29lbnYeCYjDVRB95qg9nrF1H9b/239t/Xf1n9b/11n+q/rv63/tv7b/vfflNwFwxd6cA==
+  </data>
+ </layer>
+ <objectgroup name="ground">
+  <object id="3" x="2032.33" y="0" width="15.3333" height="192.333"/>
+  <object id="4" x="0" y="-0.333333" width="15.6667" height="192.333"/>
+  <object id="5" x="0" y="192" width="2048" height="15.6667"/>
+ </objectgroup>
+ <objectgroup name="coin"/>
+ <objectgroup name="brick"/>
+ <objectgroup name="finish">
+  <object id="6" x="2016" y="111.667" width="16" height="16.3333"/>
+ </objectgroup>
+</map>

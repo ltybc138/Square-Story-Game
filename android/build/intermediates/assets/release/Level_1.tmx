@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="128" height="13" tilewidth="16" tileheight="16" nextobjectid="17">
+ <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924">
+  <image source="../Game/android/assets/tileset_gutter.png" trans="ff00ff" width="594" height="504"/>
+ </tileset>
+ <layer name="background" width="128" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAMA7Ay/4771MdIIL2kqqqqqqqqvjlLrGzb
+  </data>
+ </layer>
+ <layer name="graphics" width="128" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztkk0OhDAIRusRRtczXsKfnZnbexVuoZi40MYiVK1N4CWkG/1KeYzO0Mq4lqGPyZl/7Zh/3Zh/3Zh/3Zh/ncB6pvYP3pkbKfp64+2hO1P6B7f3n9sO5L6bUjjvkPqPnQ24Y/9XZn3nDvnun9gBP/PJPePORuI/dt7AqBgk/5YFnUOdXH7EHXfAzZfMleufymyxrw6rP+iP4/7qXp3xwb4arCrQH+c844vZf6x6c4f0TdT3S/7g5YcyYvxb6a0ZIcu+VQ==
+  </data>
+ </layer>
+ <objectgroup name="ground">
+  <object id="1" x="0" y="0.0434783">
+   <polyline points="0,0 16,-0.0434783 16,191.957 2031.91,191.957 2032.04,0 2047.87,0 2047.87,207.783 0,207.826 0.0869565,0"/>
+  </object>
+  <object id="4" x="143.969" y="175.906">
+   <polyline points="0,0 16,0.09375 16,-15.9062 32.0312,-15.9375 32.0312,-31.9688 48,-31.9375 48.0312,16.0625 0.03125,16.0625 0,-0.03125"/>
+  </object>
+  <object id="5" x="367.957" y="191.826">
+   <polyline points="0,0 0.0869565,-15.8696 15.9565,-15.8696 16.0435,-31.8261 32,-31.8696 32,-47.913 48,-47.8696 47.9565,-63.9565 63.8696,-63.913 64,-79.8696 80.0435,-79.8261 80.0435,-31.913 95.9565,-31.913 96,-79.8696 111.957,-79.8261 112,-63.9565 127.957,-63.8696 128.043,-47.913 144.043,-47.7826 144,-31.8261 160.043,-31.8261 160.043,-15.8696 176.043,-15.8261 176.087,-0.0434783 0,0.0434783"/>
+  </object>
+  <object id="6" x="736" y="191.957">
+   <polyline points="0,0 0,-48 31.9565,-48 32,-0.0869565 0,0"/>
+  </object>
+  <object id="7" x="1008" y="191.75">
+   <polyline points="0,0 0,-15.875 15.75,-15.75 16.125,-31.875 31.75,-31.75 32.125,-48 47.625,-48 48.125,-63.875 63.375,-63.875 63.875,-79.875 79.875,-80 80,-64.125 96.25,-63.875 96.125,-48 111.75,-47.75 112,-32.25 127.625,-31.75 128,-16.25 143.625,-15.625 144,-0.25 0,0"/>
+  </object>
+  <object id="9" x="1376" y="175.875" width="15.875" height="16.125"/>
+  <object id="10" x="1440" y="143.875" width="16" height="16.125"/>
+  <object id="11" x="1472.12" y="111.875" width="15.875" height="16"/>
+  <object id="12" x="1504" y="143.875" width="16" height="16"/>
+  <object id="13" x="1567.88" y="176" width="16" height="16"/>
+  <object id="14" x="1840" y="191.5">
+   <polyline points="0,0 0,-15.625 15.875,-15.5 16,-31.5 31.875,-31.375 32.125,-47.875 47.75,-47.625 48,-63.75 64,-63.625 64,0.125 0,0"/>
+  </object>
+  <object id="15" x="1936.12" y="112" width="16" height="16.125"/>
+  <object id="16" x="2000" y="95.875" width="16" height="16.125"/>
+ </objectgroup>
+ <objectgroup name="coin"/>
+ <objectgroup name="brick"/>
+ <objectgroup name="finish">
+  <object id="3" x="2016" y="16">
+   <polyline points="0,0 15.9922,-0.00390625 15.9961,16 0.00390625,16 0.00390625,-0.0078125"/>
+  </object>
+ </objectgroup>
+</map>
