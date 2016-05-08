@@ -4,7 +4,7 @@ public class Levels {
 
     // levels
     public static final String level1 = "levels/Level1-1.tmx";
-    public static final String level2 = "X_Level_2.tmx";
+    public static final String level2 = "levels/Level1-2.tmx";
     public static final String level3 = "X_Level_3.tmx";
     public static final String level4 = "X_Level_4.tmx";
     public static final String level5 = "X_Level_5.tmx";
