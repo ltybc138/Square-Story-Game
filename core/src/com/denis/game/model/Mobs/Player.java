@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Array;
 import com.denis.game.model.Fixtures.FireBall;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Bits;
+import com.denis.game.model.Resource.PlayerStatements;
 import com.denis.game.view.PlayScreen;
 
 public class Player extends Sprite {
@@ -110,6 +111,7 @@ public class Player extends Sprite {
         BodyDef bdef = new BodyDef();
         bdef.position.set(32 / Assets.PPM, 32/ Assets.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
+        bdef.gravityScale = PlayerStatements.gravityScale;
         b2body = world.createBody(bdef);
 
         // creating fixture definition on player
