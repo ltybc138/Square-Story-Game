@@ -3,8 +3,8 @@ package com.denis.game.model.Resource;
 public class Levels {
 
     // levels
-    public static final String level1 = "levels/Level1-1.tmx";
-    public static final String level2 = "levels/Level1-2.tmx";
+    public static final String level1 = "levels/manual/manual_level_1.tmx";
+    public static final String level2 = "levels/manual/manual_level_2.tmx";
     public static final String level3 = "X_Level_3.tmx";
     public static final String level4 = "X_Level_4.tmx";
     public static final String level5 = "X_Level_5.tmx";
@@ -20,11 +20,11 @@ public class Levels {
     public static final String level15 = "X_Level_15.tmx";
 
     // checking levels done
-    public static boolean isLevelsOpened = false;
+    public static boolean isLevelsOpened = true;
     public static boolean is1LevelOpen = true;
-    public static boolean is2LevelOpen = false;
-    public static boolean is3LevelOpen = false;
-    public static boolean is4LevelOpen = false;
+    public static boolean is2LevelOpen = true;
+    public static boolean is3LevelOpen = true;
+    public static boolean is4LevelOpen = true;
     public static boolean is5LevelOpen = false;
     public static boolean is6LevelOpen = false;
     public static boolean is7LevelOpen = false;

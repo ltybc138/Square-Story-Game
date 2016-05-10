@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.denis.game.controller.ScreenControlls.LevelsControlls;
+import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Levels;
 import com.denis.game.model.Resource.Settings;
@@ -62,7 +63,6 @@ public class LevelsScreen extends AbstractGameScreen {
         if(levelsControlls.isLevel3Pressed() && Levels.is3LevelOpen) {
             Assets.map = 3;
             runGame();
-            MenuScreen.background.dispose();
             dispose();
         }
 
@@ -174,9 +174,7 @@ public class LevelsScreen extends AbstractGameScreen {
 
     @Override
     public void dispose() {
-        if(Settings.isBackgroundMusicOn) {
-            MenuScreen.background.dispose();
-            Settings.isBackgroundMusicOn = false;
-        }
+        if(SettingsCache.getIsMusicOn())
+            MenuScreen.musicDispose();
     }
 }

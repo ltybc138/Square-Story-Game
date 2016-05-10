@@ -7,8 +7,8 @@ public class WriteSettings {
 
     public WriteSettings() {
 
-        Gdx.files.local(Settings.musicDestenition).writeString(String.valueOf(Settings.isMusicOn), false);
-        Gdx.files.local(Settings.settingsDestenition).writeString(String.valueOf(Settings.sound), false);
+        Gdx.files.local(Settings.musicDestenition).writeString(String.valueOf(SettingsCache.getIsMusicOn()), false);
+        Gdx.files.local(Settings.settingsDestenition).writeString(String.valueOf(SettingsCache.getSound()), false);
 
     }
 }

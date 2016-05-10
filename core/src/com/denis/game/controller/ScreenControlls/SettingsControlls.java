@@ -19,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.denis.game.Main;
+import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Settings;
 import com.denis.game.model.Resource.Textures;
@@ -78,7 +79,7 @@ public class SettingsControlls {
         sliderStyle.background = new TextureRegionDrawable(new TextureRegion(slider_background));
         sliderStyle.knob = new TextureRegionDrawable(new TextureRegion(slider_arrow));
         soundSlider = new Slider(1f, 100f, 1f, false, sliderStyle);
-        soundSlider.setValue(Settings.sound);
+        soundSlider.setValue(SettingsCache.getSound());
 
         // creating on/off music checkbox
         checkBoxOn = new Texture(Gdx.files.internal(Textures.checkBoxOn));
@@ -89,7 +90,7 @@ public class SettingsControlls {
         checkBoxStyle.font = font;
         checkBoxStyle.fontColor = Color.WHITE;
         checkBox = new CheckBox("", checkBoxStyle);
-        checkBox.setChecked(Settings.isMusicOn);
+        checkBox.setChecked(SettingsCache.getIsMusicOn());
 
         // creating music checkbox label
         onOffMusicLabel = new Label("Music: ", labelStyle);

@@ -2,10 +2,15 @@ package com.denis.game.view.Screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.denis.game.Main;
 import com.denis.game.controller.ScreenControlls.MenuControlls;
+import com.denis.game.controller.ScreenControlls.SettingsControlls;
+import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Levels;
 import com.denis.game.model.Resource.Settings;
 import com.denis.game.model.Resource.Sounds;
@@ -24,16 +29,24 @@ public class MenuScreen extends AbstractGameScreen {
     public static Sound background;
     public static long id;
 
+    private static Music music;
+    public static AssetManager manager;
+
     public MenuScreen(Game game) {
         super(game);
 
         batch = new SpriteBatch();
         menuControlls = new MenuControlls(batch);
 
-        if(!Settings.isBackgroundMusicOn) {
-            Settings.isBackgroundMusicOn = true;
-            background = Gdx.audio.newSound(Gdx.files.internal(Sounds.welcomeMusic));
-            id = background.play(Settings.sound / 2);
+        if(SettingsCache.getIsMusicOn()) {
+            manager = new AssetManager();
+            manager.load(Sounds.welcomeMusic, Music.class);
+            manager.finishLoading();
+
+            music = manager.get(Sounds.welcomeMusic, Music.class);
+            music.setLooping(true);
+            music.setVolume(SettingsCache.getSound());
+            music.play();
         }
     }
 
@@ -90,9 +103,16 @@ public class MenuScreen extends AbstractGameScreen {
 
     @Override
     public void dispose() {
-        if(Settings.isBackgroundMusicOn) {
-            background.dispose();
-            Settings.isBackgroundMusicOn = false;
+        if(SettingsCache.getIsMusicOn()) {
+            music.dispose();
+            manager.dispose();
+        }
+    }
+
+    public static void musicDispose() {
+        if(SettingsCache.getIsMusicOn()) {
+            music.dispose();
+            manager.dispose();
         }
     }
 }

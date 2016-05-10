@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.denis.game.controller.ScreenControlls.SettingsControlls;
+import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Settings;
 import com.denis.game.model.Dates.WriteSettings;
 import com.denis.game.model.Resource.Textures;
@@ -27,8 +28,8 @@ public class SettingsScreen extends AbstractGameScreen {
         batch = new SpriteBatch();
         settingsControlls = new SettingsControlls(batch);
 
-        settingsControlls.soundSlider.setValue(Settings.sound);
-        settingsControlls.checkBox.setChecked(Settings.isMusicOn);
+        settingsControlls.soundSlider.setValue(SettingsCache.getSound());
+        settingsControlls.checkBox.setChecked(SettingsCache.getIsMusicOn());
 
     }
 
@@ -55,13 +56,14 @@ public class SettingsScreen extends AbstractGameScreen {
         game.setScreen(new MenuScreen(game));
 
         // change volume of background music if it changed on settings screen
-        if(Settings.sound != changedSound)
+        /*if(SettingsCache.getSound() != changedSound)
             MenuScreen.background.setVolume(MenuScreen.id, changedSound / 2);
-
+*/
+        // TODO realize changing sound using slider
         // change volume of background music in play screen if it changed on settings screen
-        if((Settings.sound != changedSound) || (Settings.isMusicOn != isMusicOn)) {
-            Settings.sound = changedSound;
-            Settings.isMusicOn = isMusicOn;
+        if((SettingsCache.getSound() != changedSound) || (SettingsCache.getIsMusicOn() != isMusicOn)) {
+            SettingsCache.setSound(changedSound);
+            SettingsCache.setIsMusicOn(isMusicOn);
             new WriteSettings();
         }
     }

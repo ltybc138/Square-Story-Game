@@ -2,88 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-ai\1.8.0\ec30677d8ab1a8b8aa4b853c5f4e4b1361f50bf5\gdx-ai-1.8.0.jar"
+        jar="C:\Users\DNS\Desktop\GitProjects\Square-Story\core\build\libs\core-1.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="ec30677d8ab1a8b8aa4b853c5f4e4b1361f50bf5">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-ai-1.8.0_be3163a84b4b2d63904a72fce6ba0ca8b72d01ea.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-controllers-android\1.9.1\bb185043827f49333ea351bc788dbba28707635e\gdx-controllers-android-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="bb185043827f49333ea351bc788dbba28707635e">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-controllers-android-1.9.1_18db9dfec50e287c1c20d233ca510a5c8b17d64c.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.1\18554775a4fb747d360da5838298aafbb49bf13a\gdx-backend-android-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="18554775a4fb747d360da5838298aafbb49bf13a">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.1_7d000b8eeb26941bd55df5bf64273e7286b32dd0.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-bullet\1.9.1\d7829e6b8af3930f2e22c254050d1a508f03bc8e\gdx-bullet-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d7829e6b8af3930f2e22c254050d1a508f03bc8e">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-bullet-1.9.1_266b46abc6ecff39232c8fb4652c76228755ea3c.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.box2dlights\box2dlights\1.4\3d77ad5b4164fb32fc67e2446e35911bb0aaf0bd\box2dlights-1.4.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3d77ad5b4164fb32fc67e2446e35911bb0aaf0bd">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\box2dlights-1.4_afd98bbbd7b8b37ce4a082db1026286f33f8b3bc.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\Desktop\MVC_game_v0.2\core\build\libs\core-1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="3404fcea1ad0d01e48954bf7d53f2551dc58205e">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\core-1.0_0974ac9e6b21b1dd44f68d759ee88c93c0a41893.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\Desktop\MVC_game_v0.1\core\build\libs\core-1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="848dbcdb5451a2594017deef60a6dfdd31a721ad">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.1\android\build\intermediates\pre-dexed\debug\core-1.0_5202600fdde4bf920cb5c26ead9b894a79e8a197.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-controllers\1.9.1\37ec89fd7b1ef2deed3444ca94666f188e5b173d\gdx-controllers-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="37ec89fd7b1ef2deed3444ca94666f188e5b173d">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-controllers-1.9.1_3fd5b1fd7f4917476a868e36aab68ca4d196954f.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.1\984e5fb95e17b03ae5884205f8b886930ef4867\gdx-freetype-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="0984e5fb95e17b03ae5884205f8b886930ef4867">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.1_482ee0d06f1822db13951c2c44ae1dc99fbe579f.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.ashley\ashley\1.7.0\a7c4083c0a42027a3c03ba7ccecef6cbe1c5f0a4\ashley-1.7.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a7c4083c0a42027a3c03ba7ccecef6cbe1c5f0a4">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\ashley-1.7.0_5ea2a65974c50312c3b9143dcc9ca1cf1bf58575.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.1\efc80b7e8a239404fdcb9816c9d3bad168e148c2\gdx-box2d-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="efc80b7e8a239404fdcb9816c9d3bad168e148c2">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.9.1_761227daea29c64cb2b4c93f5eca1cfdf8163bea.jar" />
-    </item>
-    <item
-        jar="C:\Users\DNS\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.1\41e844a4849872fdb9c33f3f2790e356f907f491\gdx-1.9.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="41e844a4849872fdb9c33f3f2790e356f907f491">
-        <dex dex="C:\Users\DNS\Desktop\MVC_game_v0.2\android\build\intermediates\pre-dexed\debug\gdx-1.9.1_fa2bdee3ad0c56b78f740239a16ec273d7c0579c.jar" />
+        sha1="e50bd003bdf1edde93fc2d22f21e30b2c40fafdd">
+        <dex dex="C:\Users\DNS\Desktop\GitProjects\Square-Story\android\build\intermediates\pre-dexed\debug\core-1.0_100f296c23cfae715dadc117bfd17cf8f7ba2cd0.jar" />
     </item>
 
 </items>

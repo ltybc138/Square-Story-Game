@@ -3,6 +3,7 @@ package com.denis.game.model.Dates;
 import com.badlogic.gdx.Gdx;
 import com.denis.game.model.Resource.Settings;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -10,6 +11,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.naming.Context;
 
 public class ReadSettings {
 
@@ -22,15 +25,15 @@ public class ReadSettings {
             // reading music settings
             isMusicOn = Gdx.files.local(Settings.musicDestenition).readString();
             sound = Gdx.files.local(Settings.settingsDestenition).readString();
-            Settings.isMusicOn = Boolean.parseBoolean(isMusicOn);
-            Settings.sound = Float.parseFloat(sound);
+            SettingsCache.setIsMusicOn(Boolean.parseBoolean(isMusicOn));
+            SettingsCache.setSound(Float.parseFloat(sound));
 
             // reading levels settings
 
 
 
         } catch(Exception e) {
-            List<String> musicLines = Arrays.asList(Boolean.toString(Settings.defaultMusic));
+            /*List<String> musicLines = Arrays.asList(Boolean.toString(Settings.defaultMusic));
             Path musicFile = Paths.get(Settings.musicDestenition);
             Files.write(musicFile, musicLines, Charset.forName("UTF-8"));
 
@@ -39,7 +42,10 @@ public class ReadSettings {
             Files.write(soundFile, soundLines, Charset.forName("UTF-8"));
 
             Settings.isMusicOn = Settings.defaultMusic;
-            Settings.sound = Settings.defaultSound;
+            Settings.sound = Settings.defaultSound;*/
+
+
+            // create settings file in android(Internal storage)
 
             // TODO realize creating new file in android
         }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -22,6 +23,7 @@ import com.denis.game.Main;
 import com.denis.game.controller.B2WorldCreator;
 import com.denis.game.controller.Controller;
 import com.denis.game.controller.WorldContactListener;
+import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Enemy;
 import com.denis.game.model.Resource.Levels;
@@ -60,6 +62,8 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     private WorldContactListener listener;
 
+    private static AssetManager manager;
+
     public PlayScreen(Game game) {
         super(game);
 
@@ -88,14 +92,19 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
         controller = new Controller(batch);
 
-        Gdx.app.log("Music:", Boolean.toString(Settings.isMusicOn));
-        Gdx.app.log("Sound:", Float.toString(Settings.sound));
+        Gdx.app.log("Music:", Boolean.toString(SettingsCache.getIsMusicOn()));
+        Gdx.app.log("Sound:", Float.toString(SettingsCache.getSound()));
 
         // creating game music
-        if(Settings.isMusicOn) {
-            music = Main.manager.get(Sounds.music, Music.class);
+        if(SettingsCache.getIsMusicOn()) {
+
+            manager = new AssetManager();
+            manager.load(Sounds.music, Music.class);
+            manager.finishLoading();
+
+            music = manager.get(Sounds.music, Music.class);
             music.setLooping(true);
-            music.setVolume(Settings.sound);
+            music.setVolume(SettingsCache.getSound());
             music.play();
         }
     }
@@ -280,8 +289,12 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     public void goodGame() {
         game.setScreen(new GoodGameScreen(game));
-        if(Settings.isMusicOn)
+        if(SettingsCache.getIsMusicOn()) {
             music.dispose();
+            manager.dispose();
+        }
+        music.dispose();
+        manager.dispose();
         Assets.keysCollected = 0;
         Assets.ballsCount = 0;
         dispose();
@@ -289,8 +302,10 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     public void gameOver() {
         game.setScreen(new GameOverScreen(game));
-        if(Settings.isMusicOn)
+        if(SettingsCache.getIsMusicOn()) {
             music.dispose();
+            manager.dispose();
+        }
         Assets.keysCollected = 0;
         Assets.ballsCount = 0;
         dispose();
@@ -298,8 +313,10 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     public void backToMenu() {
         game.setScreen(new MenuScreen(game));
-        if(Settings.isMusicOn)
+        if(SettingsCache.getIsMusicOn()) {
             music.dispose();
+            manager.dispose();
+        }
         Assets.keysCollected = 0;
         Assets.ballsCount = 0;
         dispose();
@@ -318,8 +335,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
                 break;
             case 4:
                 Levels.is4LevelOpen = true;
-            case 5:
-                Levels.is5LevelOpen = true;
             // TODO more levels
         }
     }
