@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapObject;
 import com.denis.game.controller.ScreenControlls.SettingsControlls;
 import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Settings;
@@ -21,6 +22,7 @@ public class SettingsScreen extends AbstractGameScreen {
 
     private float changedSound;
     private boolean isMusicOn;
+    private static boolean preMusicState;
 
     public SettingsScreen(Game game) {
         super(game);
@@ -28,9 +30,9 @@ public class SettingsScreen extends AbstractGameScreen {
         batch = new SpriteBatch();
         settingsControlls = new SettingsControlls(batch);
 
-        settingsControlls.soundSlider.setValue(SettingsCache.getSound());
         settingsControlls.checkBox.setChecked(SettingsCache.getIsMusicOn());
 
+        preMusicState = SettingsCache.getIsMusicOn();
     }
 
 
@@ -47,25 +49,20 @@ public class SettingsScreen extends AbstractGameScreen {
         if(settingsControlls.isBackButtonPressed())
             backToMenu();
 
-        changedSound = SettingsControlls.soundSlider.getValue() / 100;
-        isMusicOn = SettingsControlls.checkBox.isChecked();
+        isMusicOn = SettingsControlls.getCheckbox();
 
     }
 
     public void backToMenu() {
-        game.setScreen(new MenuScreen(game));
-
-        // change volume of background music if it changed on settings screen
-        /*if(SettingsCache.getSound() != changedSound)
-            MenuScreen.background.setVolume(MenuScreen.id, changedSound / 2);
-*/
-        // TODO realize changing sound using slider
         // change volume of background music in play screen if it changed on settings screen
-        if((SettingsCache.getSound() != changedSound) || (SettingsCache.getIsMusicOn() != isMusicOn)) {
-            SettingsCache.setSound(changedSound);
+        if(SettingsCache.getIsMusicOn() != isMusicOn) {
             SettingsCache.setIsMusicOn(isMusicOn);
+            if(!isMusicOn)
+                MenuScreen.musicDispose();
+
             new WriteSettings();
         }
+        game.setScreen(new MenuScreen(game));
     }
 
     @Override

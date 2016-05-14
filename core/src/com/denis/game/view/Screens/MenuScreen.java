@@ -29,7 +29,7 @@ public class MenuScreen extends AbstractGameScreen {
     public static Sound background;
     public static long id;
 
-    private static Music music;
+    public static Music music;
     public static AssetManager manager;
 
     public MenuScreen(Game game) {
@@ -63,6 +63,7 @@ public class MenuScreen extends AbstractGameScreen {
         // back to menu button pressing treatment
         if(menuControlls.isStartPressed()) {
             goToPlayScreen();
+            musicDispose();
             dispose();
         }
 
@@ -110,9 +111,7 @@ public class MenuScreen extends AbstractGameScreen {
     }
 
     public static void musicDispose() {
-        if(SettingsCache.getIsMusicOn()) {
-            music.dispose();
-            manager.dispose();
-        }
+        music.dispose();
+        manager.dispose();
     }
 }

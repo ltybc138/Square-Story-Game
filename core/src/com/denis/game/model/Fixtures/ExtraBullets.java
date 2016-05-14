@@ -2,6 +2,7 @@ package com.denis.game.model.Fixtures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Bits;
@@ -17,7 +18,7 @@ public class ExtraBullets extends InteractiveTileObject{
     @Override
     public void onHeadHit() {
         Gdx.app.log("Extra bullet block", "Collision");
-        Assets.maxBalls++;
+        PlayerCache.setMaxBalls(PlayerCache.getMaxBalls() + 1);
         setCategoryFilter(Bits.DESTROYED_BIT);
         getCell().setTile(null);
     }

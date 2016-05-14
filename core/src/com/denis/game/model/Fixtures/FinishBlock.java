@@ -3,6 +3,7 @@ package com.denis.game.model.Fixtures;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.denis.game.Main;
+import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Bits;
@@ -22,8 +23,8 @@ public class FinishBlock extends InteractiveTileObject {
     @Override
     public void onHeadHit() {
         Gdx.app.log("Finish block", "Collision");
-        Gdx.app.log("Coins: ", Float.toString(PlayerStatements.coinCount));
-        PlayerStatements.coinCount = 0;
+        Gdx.app.log("Coins: ", Float.toString(PlayerCache.getCoinCount()));
+        PlayerCache.setCoinCount(0);
         Assets.isFinishBlockBroke = true;
     }
 }

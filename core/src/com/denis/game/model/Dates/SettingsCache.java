@@ -5,12 +5,21 @@ import com.badlogic.gdx.Preferences;
 
 public class SettingsCache {
 
-    private static Preferences prefs = Gdx.app.getPreferences("My Preferences");
+    private static Preferences prefs = Gdx.app.getPreferences("Settings Preferences");
 
     public SettingsCache() {
         prefs.putBoolean("isMusicOn", true); // set music looping to true
         prefs.putFloat("sound", 0.5f); // set sound in a half
         prefs.flush();
+    }
+
+    // getters
+    public static float getSound() {
+        return prefs.getFloat("sound");
+    }
+
+    public static boolean getIsMusicOn() {
+        return prefs.getBoolean("isMusicOn");
     }
 
     // setters
@@ -22,14 +31,5 @@ public class SettingsCache {
     public static void setIsMusicOn(boolean isMusicOn) {
         prefs.putBoolean("isMusicOn", isMusicOn);
         prefs.flush();
-    }
-
-    // getters
-    public static float getSound() {
-        return prefs.getFloat("sound");
-    }
-
-    public static boolean getIsMusicOn() {
-        return prefs.getBoolean("isMusicOn");
     }
 }

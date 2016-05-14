@@ -33,12 +33,8 @@ public class SettingsControlls {
     private BitmapFont font;
     private Label.LabelStyle labelStyle;
 
-    private Texture slider_background;
-    private Texture slider_arrow;
     private Texture checkBoxOn;
     private Texture checkBoxOff;
-
-    public static Slider soundSlider;
 
     private Label screenLabel;
     private Label soundLabel;
@@ -71,15 +67,6 @@ public class SettingsControlls {
         settingsTable.setPosition(Assets.V_WIDTH / 2, Assets.V_HEIGHT / 2);
         settingsTable.left();
         settingsTable.center();
-
-        // creating sound slider
-        slider_background = new Texture(Gdx.files.internal(Textures.slider_background));
-        slider_arrow = new Texture(Gdx.files.internal(Textures.slider_arrow));
-        Slider.SliderStyle sliderStyle = new Slider.SliderStyle();
-        sliderStyle.background = new TextureRegionDrawable(new TextureRegion(slider_background));
-        sliderStyle.knob = new TextureRegionDrawable(new TextureRegion(slider_arrow));
-        soundSlider = new Slider(1f, 100f, 1f, false, sliderStyle);
-        soundSlider.setValue(SettingsCache.getSound());
 
         // creating on/off music checkbox
         checkBoxOn = new Texture(Gdx.files.internal(Textures.checkBoxOn));
@@ -132,9 +119,6 @@ public class SettingsControlls {
         topTable.add(screenLabel).padRight(30);
         topTable.add().pad(0, 30, 0, 30);
 
-        settingsTable.row();
-        settingsTable.add(soundLabel);
-        settingsTable.add(soundSlider);
         settingsTable.row();
         settingsTable.add(onOffMusicLabel);
         settingsTable.add(checkBox);

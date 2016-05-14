@@ -2,6 +2,7 @@ package com.denis.game.model.Fixtures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Bits;
 import com.denis.game.model.Resource.PlayerStatements;
@@ -18,9 +19,6 @@ public class Lava extends InteractiveTileObject{
     @Override
     public void onHeadHit() {
         Gdx.app.log("Lava", "Collision");
-        //setCategoryFilter(Bits.DESTROYED_BIT);
-        //getCell().setTile(null);
-        //Hud.addScore(1000);
-        PlayerStatements.isPlayerDied = true;
+        PlayerCache.setIsPlayerDied(true);
     }
 }

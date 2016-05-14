@@ -24,14 +24,9 @@ public class ReadSettings {
         try {
             // reading music settings
             isMusicOn = Gdx.files.local(Settings.musicDestenition).readString();
-            sound = Gdx.files.local(Settings.settingsDestenition).readString();
             SettingsCache.setIsMusicOn(Boolean.parseBoolean(isMusicOn));
-            SettingsCache.setSound(Float.parseFloat(sound));
 
             // reading levels settings
-
-
-
         } catch(Exception e) {
             /*List<String> musicLines = Arrays.asList(Boolean.toString(Settings.defaultMusic));
             Path musicFile = Paths.get(Settings.musicDestenition);

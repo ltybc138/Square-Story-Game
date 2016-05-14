@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
+import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.Fixtures.FireBall;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Bits;
@@ -111,7 +112,7 @@ public class Player extends Sprite {
         BodyDef bdef = new BodyDef();
         bdef.position.set(32 / Assets.PPM, 32/ Assets.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
-        bdef.gravityScale = PlayerStatements.gravityScale;
+        bdef.gravityScale = 1f;
         b2body = world.createBody(bdef);
 
         // creating fixture definition on player

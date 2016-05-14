@@ -23,6 +23,7 @@ import com.denis.game.Main;
 import com.denis.game.controller.B2WorldCreator;
 import com.denis.game.controller.Controller;
 import com.denis.game.controller.WorldContactListener;
+import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Enemy;
@@ -63,6 +64,8 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
     private WorldContactListener listener;
 
     private static AssetManager manager;
+
+    public static int howManyBalls = 0;
 
     public PlayScreen(Game game) {
         super(game);
@@ -178,12 +181,12 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
                 player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
             if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2)
                 player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
-            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && Assets.ballsCount < Assets.maxBalls) {
-                Assets.howManyBalls++;
-                Assets.ballsCount++;
-                if (Assets.howManyBalls == 1)
+            if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+                howManyBalls++;
+                if(howManyBalls == 1)
                     player.fire();
-            } else Assets.howManyBalls = 0;
+            } else howManyBalls = 0;
+
         }else {
             if(controller.isUpPressed() && player.getState() != Player.State.JUMPING)
                 player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
@@ -191,12 +194,11 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
                 player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
             if(controller.isLeftPressed() && player.b2body.getLinearVelocity().x >= -2)
                 player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
-            if (controller.isShotPressed() && Assets.ballsCount < Assets.maxBalls) {
-                Assets.howManyBalls++;
-                Assets.ballsCount++;
-                if (Assets.howManyBalls == 1)
+            if(controller.isShotPressed()) {
+                howManyBalls++;
+                if(howManyBalls == 1)
                     player.fire();
-            } else Assets.howManyBalls = 0;
+            } else howManyBalls = 0;
         }
         if(Assets.isPlayerHaveBeated) {
             player.b2body.applyLinearImpulse(new Vector2(0, 3f), player.b2body.getWorldCenter(), true);
@@ -276,9 +278,9 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         }
 
         // bad end game
-        if(hud.worldTimer <= 0 || hud.health <=0 || PlayerStatements.isPlayerDied) {
+        if(hud.worldTimer <= 0 || hud.health <=0 || PlayerCache.getIsPlayerDied()) {
             gameOver();
-            PlayerStatements.isPlayerDied = false;
+            PlayerCache.setIsPlayerDied(false);
         }
 
         // back button pressed
@@ -293,10 +295,8 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
             music.dispose();
             manager.dispose();
         }
-        music.dispose();
-        manager.dispose();
         Assets.keysCollected = 0;
-        Assets.ballsCount = 0;
+        PlayerCache.setBallsCount(0);
         dispose();
     }
 
@@ -307,7 +307,7 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
             manager.dispose();
         }
         Assets.keysCollected = 0;
-        Assets.ballsCount = 0;
+        PlayerCache.setBallsCount(0);
         dispose();
     }
 
@@ -318,7 +318,7 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
             manager.dispose();
         }
         Assets.keysCollected = 0;
-        Assets.ballsCount = 0;
+        PlayerCache.setBallsCount(0);
         dispose();
     }
 

@@ -2,6 +2,7 @@ package com.denis.game.model.Fixtures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Bits;
 import com.denis.game.model.Resource.PlayerStatements;
@@ -21,7 +22,7 @@ public class Coin extends InteractiveTileObject {
         Gdx.app.log("Coin", "Collision");
         setCategoryFilter(Bits.DESTROYED_BIT);
         getCell().setTile(null);
-        PlayerStatements.coinCount++;
+        PlayerCache.setCoinCount(PlayerCache.getCoinCount() + 1);
         Hud.addScore(1000);
     }
 }
