@@ -31,14 +31,8 @@
   <object id="64" x="960" y="192" width="64" height="32"/>
  </objectgroup>
  <objectgroup name="mobs"/>
- <objectgroup name="keys"/>
- <objectgroup name="door"/>
- <objectgroup name="coin"/>
- <objectgroup name="oppened blocks"/>
- <objectgroup name="lava"/>
  <objectgroup name="finish blocks">
   <object id="55" x="1008" y="128.022" width="16" height="16"/>
  </objectgroup>
  <objectgroup name="abstrackt stop block"/>
- <objectgroup name="extra bullets"/>
 </map>
