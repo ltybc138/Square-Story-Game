@@ -9,8 +9,11 @@ public class SettingsCache {
 
     public SettingsCache() {
         prefs.putBoolean("isMusicOn", true); // set music looping to true
+        prefs.getBoolean("isGyroscopeOn", true); // set gyroscope to true
         prefs.putFloat("sound", 0.5f); // set sound in a half
         prefs.flush();
+
+        Gdx.app.log("SettingsCache", "created"); // TODO delete log
     }
 
     // getters
@@ -22,6 +25,10 @@ public class SettingsCache {
         return prefs.getBoolean("isMusicOn");
     }
 
+    public static boolean getIsGyroscopeOn() {
+        return prefs.getBoolean("isGyroscopeOn");
+    }
+
     // setters
     public static void setSound(float sound) {
         prefs.putFloat("sound", sound);
@@ -30,6 +37,11 @@ public class SettingsCache {
 
     public static void setIsMusicOn(boolean isMusicOn) {
         prefs.putBoolean("isMusicOn", isMusicOn);
+        prefs.flush();
+    }
+
+    public static void setIsGyroscopeOn(boolean isGyroscopeOn) {
+        prefs.putBoolean("isGyroscopeOn", isGyroscopeOn);
         prefs.flush();
     }
 }

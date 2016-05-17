@@ -45,7 +45,7 @@ public class B2WorldCreator {
         fdef = new FixtureDef();
 
         // Ground initialization
-        for(MapObject object : map.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)) {
+        for(MapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             bdef.type = BodyDef.BodyType.StaticBody;
@@ -62,12 +62,12 @@ public class B2WorldCreator {
         // Goombas initialization
         goombas = new Array<BlackSquare>();
 
-        for(MapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
+        for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             goombas.add(new BlackSquare(screen, rect.getX() / Assets.PPM, rect.getY() / Assets.PPM));
         }
 
-        // Key initialization
+        /*// Key initialization
         for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
@@ -100,28 +100,28 @@ public class B2WorldCreator {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             new Lava(screen, rect);
-        }
+        }*/
 
         // FinishBlock initialization
-        for(MapObject object : map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)) {
+        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             new FinishBlock(screen, rect);
         }
 
         // Abstract stop block initialization
-        for(MapObject object : map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)) {
+        for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             new AbstractStopBlock(screen, rect);
         }
 
         // Extra bullets blocks initialization
-        for(MapObject object : map.getLayers().get(10).getObjects().getByType(RectangleMapObject.class)) {
+        /*for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             new ExtraBullets(screen, rect);
-        }
+        }*/
     }
 
     public Array<BlackSquare> getGoombas() {

@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.denis.game.controller.ScreenControlls.GameOverControlls;
+import com.denis.game.controller.ScreenControlls.GameOverControls;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.AbstractGameScreen;
 
@@ -12,14 +12,14 @@ import java.lang.Override;
 
 public class GameOverScreen extends AbstractGameScreen {
 
-    private GameOverControlls gameOverControlls;
+    private GameOverControls gameOverControlls;
     private SpriteBatch batch;
 
     public GameOverScreen(Game game) {
         super(game);
 
         batch = new SpriteBatch();
-        gameOverControlls = new GameOverControlls(batch);
+        gameOverControlls = new GameOverControls(batch);
     }
 
 

@@ -4,10 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.MapObject;
-import com.denis.game.controller.ScreenControlls.SettingsControlls;
+import com.denis.game.controller.ScreenControlls.SettingsControls;
 import com.denis.game.model.Dates.SettingsCache;
-import com.denis.game.model.Resource.Settings;
 import com.denis.game.model.Dates.WriteSettings;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.AbstractGameScreen;
@@ -16,23 +14,21 @@ import java.lang.Override;
 
 public class SettingsScreen extends AbstractGameScreen {
 
-    private SettingsControlls settingsControlls;
+    private SettingsControls settingsControlls;
 
     private SpriteBatch batch;
 
-    private float changedSound;
     private boolean isMusicOn;
-    private static boolean preMusicState;
+    private boolean isGyroscopeOn;
 
     public SettingsScreen(Game game) {
         super(game);
 
         batch = new SpriteBatch();
-        settingsControlls = new SettingsControlls(batch);
+        settingsControlls = new SettingsControls(batch);
 
-        settingsControlls.checkBox.setChecked(SettingsCache.getIsMusicOn());
-
-        preMusicState = SettingsCache.getIsMusicOn();
+        settingsControlls.musicCheckBox.setChecked(SettingsCache.getIsMusicOn());
+        settingsControlls.gyroscopeCheckBox.setChecked(SettingsCache.getIsGyroscopeOn());
     }
 
 
@@ -49,7 +45,8 @@ public class SettingsScreen extends AbstractGameScreen {
         if(settingsControlls.isBackButtonPressed())
             backToMenu();
 
-        isMusicOn = SettingsControlls.getCheckbox();
+        isMusicOn = SettingsControls.getMusicCheckBox();
+        isGyroscopeOn = SettingsControls.getGyroscopeCheckBox();
 
     }
 
@@ -59,9 +56,9 @@ public class SettingsScreen extends AbstractGameScreen {
             SettingsCache.setIsMusicOn(isMusicOn);
             if(!isMusicOn)
                 MenuScreen.musicDispose();
-
             new WriteSettings();
         }
+        SettingsCache.setIsGyroscopeOn(isGyroscopeOn);
         game.setScreen(new MenuScreen(game));
     }
 

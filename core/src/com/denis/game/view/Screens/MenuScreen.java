@@ -7,12 +7,9 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.denis.game.Main;
-import com.denis.game.controller.ScreenControlls.MenuControlls;
-import com.denis.game.controller.ScreenControlls.SettingsControlls;
+import com.denis.game.controller.ScreenControlls.MenuControls;
 import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Levels;
-import com.denis.game.model.Resource.Settings;
 import com.denis.game.model.Resource.Sounds;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.AbstractGameScreen;
@@ -22,7 +19,7 @@ import java.lang.Override;
 
 public class MenuScreen extends AbstractGameScreen {
 
-    private MenuControlls menuControlls;
+    private MenuControls menuControlls;
 
     private SpriteBatch batch;
 
@@ -36,7 +33,7 @@ public class MenuScreen extends AbstractGameScreen {
         super(game);
 
         batch = new SpriteBatch();
-        menuControlls = new MenuControlls(batch);
+        menuControlls = new MenuControls(batch);
 
         if(SettingsCache.getIsMusicOn()) {
             manager = new AssetManager();
@@ -63,7 +60,6 @@ public class MenuScreen extends AbstractGameScreen {
         // back to menu button pressing treatment
         if(menuControlls.isStartPressed()) {
             goToPlayScreen();
-            musicDispose();
             dispose();
         }
 

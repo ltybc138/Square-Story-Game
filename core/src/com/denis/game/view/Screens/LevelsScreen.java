@@ -4,29 +4,27 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.denis.game.controller.ScreenControlls.LevelsControlls;
+import com.denis.game.controller.HUDWithControls;
+import com.denis.game.controller.ScreenControlls.LevelsControls;
 import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Levels;
-import com.denis.game.model.Resource.Settings;
-import com.denis.game.model.Resource.Sounds;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.AbstractGameScreen;
-import com.denis.game.view.Hud;
 import com.denis.game.view.PlayScreen;
 
 public class LevelsScreen extends AbstractGameScreen {
 
-    private LevelsControlls levelsControlls;
+    private LevelsControls levelsControlls;
 
     private SpriteBatch batch;
-    private Hud hud;
+    private HUDWithControls hud;
 
     public LevelsScreen(Game game) {
         super(game);
 
         batch = new SpriteBatch();
-        levelsControlls = new LevelsControlls(batch);
+        levelsControlls = new LevelsControls(batch);
     }
 
 

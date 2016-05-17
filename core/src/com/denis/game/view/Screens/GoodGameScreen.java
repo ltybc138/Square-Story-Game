@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.denis.game.controller.ScreenControlls.GoodGameControlls;
+import com.denis.game.controller.ScreenControlls.GoodGameControls;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.AbstractGameScreen;
@@ -14,14 +14,14 @@ import java.lang.Override;
 
 public class GoodGameScreen extends AbstractGameScreen {
 
-    private GoodGameControlls goodGameControlls;
+    private GoodGameControls goodGameControlls;
     private SpriteBatch batch;
 
     public GoodGameScreen(Game game) {
         super(game);
 
         batch = new SpriteBatch();
-        goodGameControlls = new GoodGameControlls(batch);
+        goodGameControlls = new GoodGameControls(batch);
 
         if(Assets.map > Assets.lastMap) {
             Assets.map = 1;

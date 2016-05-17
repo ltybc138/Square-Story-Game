@@ -19,18 +19,13 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.denis.game.Main;
-import com.denis.game.controller.B2WorldCreator;
-import com.denis.game.controller.Controller;
-import com.denis.game.controller.WorldContactListener;
+import com.denis.game.controller.*;
 import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Enemy;
 import com.denis.game.model.Resource.Levels;
 import com.denis.game.model.Mobs.Player;
-import com.denis.game.model.Resource.PlayerStatements;
-import com.denis.game.model.Resource.Settings;
 import com.denis.game.model.Resource.Sounds;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.Screens.GameOverScreen;
@@ -46,8 +41,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     private OrthographicCamera gamecam;
     private Viewport gamePort;
-    private Hud hud;
-    public Controller controller;
 
     private TmxMapLoader mapLoader;
     private TiledMap map;
@@ -67,6 +60,10 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     public static int howManyBalls = 0;
 
+    private HUDWithControls hudWithControls;
+
+    private boolean isGyroscopeOn = SettingsCache.getIsGyroscopeOn();
+
     public PlayScreen(Game game) {
         super(game);
 
@@ -75,9 +72,10 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         atlas = new TextureAtlas(Textures.mobsData);
 
         gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(Assets.V_WIDTH / Assets.PPM, Assets.V_HEIGHT / Assets.PPM, gamecam);
+        gamePort = new FitViewport(Assets.V_WIDTH / Assets.PPM * 2, Assets.V_HEIGHT / Assets.PPM * 2, gamecam);
 
-        hud = new Hud(batch);
+        //hud = new com.denis.game.controller.Hud(batch);
+        hudWithControls = new HUDWithControls(batch);
 
         mapLoader = new TmxMapLoader();
         setLevel(Assets.map);
@@ -93,14 +91,15 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
         world.setContactListener(new WorldContactListener());
 
-        controller = new Controller(batch);
+        if(Gdx.app.getType() == Application.ApplicationType.Android && !SettingsCache.getIsGyroscopeOn())
+            hudWithControls = new HUDWithControls(batch);
+            //controller = new Controller(batch);
 
         Gdx.app.log("Music:", Boolean.toString(SettingsCache.getIsMusicOn()));
         Gdx.app.log("Sound:", Float.toString(SettingsCache.getSound()));
 
         // creating game music
         if(SettingsCache.getIsMusicOn()) {
-
             manager = new AssetManager();
             manager.load(Sounds.music, Music.class);
             manager.finishLoading();
@@ -175,35 +174,48 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
         // set the controller settings based on devise
         if(Gdx.app.getType() == Application.ApplicationType.Desktop) {
-            if(Gdx.input.isKeyJustPressed(Input.Keys.UP) && player.getState() != Player.State.JUMPING)
+            if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && player.getState() != Player.State.JUMPING)
                 player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
-            if(Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2)
                 player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
-            if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2)
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2)
                 player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
-            if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
                 howManyBalls++;
-                if(howManyBalls == 1)
+                if (howManyBalls == 1)
                     player.fire();
             } else howManyBalls = 0;
+        }
+        if(Gdx.app.getType() == Application.ApplicationType.Android) {
 
-        }else {
-            if(controller.isUpPressed() && player.getState() != Player.State.JUMPING)
-                player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
-            if(controller.isRightPressed() && player.b2body.getLinearVelocity().x <= 2)
-                player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
-            if(controller.isLeftPressed() && player.b2body.getLinearVelocity().x >= -2)
-                player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
-            if(controller.isShotPressed()) {
-                howManyBalls++;
-                if(howManyBalls == 1)
-                    player.fire();
-            } else howManyBalls = 0;
+            if(isGyroscopeOn) {
+                if(Gdx.input.justTouched() && player.getState() != Player.State.JUMPING)
+                    player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
+                if((Gdx.input.getPitch() < -5) && player.b2body.getLinearVelocity().x <= 2)
+                    player.b2body.applyLinearImpulse(new Vector2(-Gdx.input.getPitch() / 50000 + 0.065f, 0), player.b2body.getWorldCenter(), true);
+                if((Gdx.input.getPitch() > 5) && player.b2body.getLinearVelocity().x >= -2)
+                    player.b2body.applyLinearImpulse(new Vector2(-Gdx.input.getPitch() / 50000 - 0.065f, 0), player.b2body.getWorldCenter(), true);
+                if((Gdx.input.getPitch() > -10) && (Gdx.input.getPitch() < 10) && player.b2body.getLinearVelocity().x >= -2)
+                    player.b2body.applyLinearImpulse(new Vector2(0, 0), player.b2body.getWorldCenter(), true);
+            }else {
+                if(hudWithControls.isUpPressed() && player.getState() != Player.State.JUMPING)
+                    player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
+                if(hudWithControls.isRightPressed() && player.b2body.getLinearVelocity().x <= 2)
+                    player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
+                if(hudWithControls.isLeftPressed() && player.b2body.getLinearVelocity().x >= -2)
+                    player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
+                if(hudWithControls.isShotPressed()) {
+                    howManyBalls++;
+                    if(howManyBalls == 1)
+                        player.fire();
+                } else howManyBalls = 0;
+            }
+
         }
         if(Assets.isPlayerHaveBeated) {
             player.b2body.applyLinearImpulse(new Vector2(0, 3f), player.b2body.getWorldCenter(), true);
             Assets.isPlayerHaveBeated = false;
-            hud.downHealth(25);
+            hudWithControls.downHealth(25);
         }
 
     }
@@ -213,7 +225,7 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
         world.step(1 / 60f, 6, 2);
 
-        hud.update(dt);
+        hudWithControls.update(dt);
         for(Enemy enemy : creator.getGoombas())
             enemy.update(dt);
         player.update(dt);
@@ -227,7 +239,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         gamecam.position.y = player.b2body.getPosition().y + Assets.V_HEIGHT / Assets.PPM / 6;
         gamecam.update();
 
-
         renderer.setView(gamecam);
     }
 
@@ -238,7 +249,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         //Gdx.gl.glClearColor(0.9725f, 0.6941f, 0.5843f, 0);
         Gdx.gl.glClearColor(0.2078f, 0.3608f, 0.4902f, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 
         renderer.render();
 
@@ -252,15 +262,14 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         // TODO Random level
         batch.end();
 
-        batch.setProjectionMatrix(hud.stage.getCamera().combined);
-        hud.stage.draw();
-
-        if(Hud.isBackButtonPressed())
-            Gdx.app.log("Play Screen Button", "Pressed");
+        hudWithControls.draw();
 
         // creating android control buttons
-        if(Gdx.app.getType() == Application.ApplicationType.Android)
-            controller.draw();
+        if(Gdx.app.getType() == Application.ApplicationType.Android && !SettingsCache.getIsGyroscopeOn()) {
+            hudWithControls.draw();
+            if(hudWithControls.isBackPressed())
+                backToMenu();
+        }
 
         // good end level
         if(Assets.isFinishBlockBroke) {
@@ -278,15 +287,15 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         }
 
         // bad end game
-        if(hud.worldTimer <= 0 || hud.health <=0 || PlayerCache.getIsPlayerDied()) {
+        if(hudWithControls.worldTimer <= 0 || hudWithControls.health <=0 || PlayerCache.getIsPlayerDied()) {
             gameOver();
             PlayerCache.setIsPlayerDied(false);
         }
 
         // back button pressed
-        if(hud.isBackButtonPressed()){
+        if(hudWithControls.isBackPressed())
             backToMenu();
-        }
+
     }
 
     public void goodGame() {
@@ -342,7 +351,7 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-        controller.resize(width, height);
+        hudWithControls.resize(width, height);
     }
 
     public TiledMap getMap() {
@@ -374,8 +383,9 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         renderer.dispose();
         world.dispose();
         b2dr.dispose();
-        hud.stage.dispose();
-        controller.dispose();
+        hudWithControls.dispose();
+        if(!isGyroscopeOn)
+            hudWithControls.dispose();
         batch.dispose();
     }
 }

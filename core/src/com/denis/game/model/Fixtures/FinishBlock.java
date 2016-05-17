@@ -7,8 +7,6 @@ import com.denis.game.model.Dates.PlayerCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Bits;
-import com.denis.game.model.Resource.PlayerStatements;
-import com.denis.game.view.Hud;
 import com.denis.game.view.PlayScreen;
 
 public class FinishBlock extends InteractiveTileObject {

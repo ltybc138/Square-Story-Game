@@ -3,10 +3,10 @@ package com.denis.game.model.Fixtures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
+import com.denis.game.controller.HUDWithControls;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Bits;
-import com.denis.game.view.Hud;
 import com.denis.game.view.PlayScreen;
 
 public class Key extends InteractiveTileObject {
@@ -22,7 +22,7 @@ public class Key extends InteractiveTileObject {
         Gdx.app.log("Key", "Collision");
         setCategoryFilter(Bits.DESTROYED_BIT);
         getCell().setTile(null);
-        Hud.addScore(500);
+        HUDWithControls.addScore(500);
         Assets.keysCollected++;
     }
 }

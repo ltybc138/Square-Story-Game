@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Json;
 import com.denis.game.model.Dates.ReadSettings;
 import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Settings;
@@ -16,11 +17,12 @@ public class Main extends Game {
 
 	public SpriteBatch batch;
 	public static BitmapFont font;
+	public static Json json;
 
 	@Override
 	public void create () {
 
-		SettingsCache settingsCache = new SettingsCache();
+		new SettingsCache();
 
 		if(Gdx.app.getType() == Application.ApplicationType.Desktop)
 			try {

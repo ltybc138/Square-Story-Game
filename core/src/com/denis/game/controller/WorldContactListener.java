@@ -6,12 +6,10 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.denis.game.model.Fixtures.ExtraBullets;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Enemy;
 import com.denis.game.model.InteractiveTileObject;
 import com.denis.game.model.Resource.Bits;
-import com.denis.game.view.Hud;
 import com.denis.game.view.PlayScreen;
 
 public class WorldContactListener implements ContactListener{
@@ -68,9 +66,6 @@ public class WorldContactListener implements ContactListener{
                 if(fixA.getFilterData().categoryBits == Bits.ENEMY_BIT) {
                     ((Enemy) fixA.getUserData()).reverseVelocity(true, false);
                     Assets.isPlayerHaveBeated = true;
-                /*} else {
-                    ((Enemy) fixA.getUserData()).reverseVelocity(true, false);
-                }*/
                 Gdx.app.log("PLAYER", "DIED");}
                 break;
 
@@ -90,30 +85,30 @@ public class WorldContactListener implements ContactListener{
             case Bits.FIREBALL_BIT | Bits.ENEMY_BIT:
                 if(fixA.getFilterData().categoryBits == Bits.ENEMY_BIT) {
                     ((Enemy) fixA.getUserData()).hitOnHead();
-                    Hud.addScore(1000);
+                    HUDWithControls.addScore(1000);
                 } else {
                     ((Enemy) fixB.getUserData()).hitOnHead();
-                    Hud.addScore(1000);
+                    HUDWithControls.addScore(1000);
                 }
                 break;
 
             case Bits.PLAYER_BIT | Bits.EXTRA_BULLET:
                 if(fixA.getFilterData().categoryBits == Bits.EXTRA_BULLET) {
                     ((Enemy) fixA.getUserData()).hitOnHead();
-                    Hud.addScore(1000);
+                    HUDWithControls.addScore(1000);
                 } else {
                     ((Enemy) fixB.getUserData()).hitOnHead();
-                    Hud.addScore(1000);
+                    HUDWithControls.addScore(1000);
                 }
 
 
             /*case Bits.FIREBALL_BIT | Bits.ENEMY_HEAD_BIT:
                 if (fixA.getFilterData().categoryBits == Bits.ENEMY_HEAD_BIT) {
                     ((Enemy) fixA.getUserData()).hitOnHead();
-                    Hud.addScore(1000);
+                    HUDWithControls.addScore(1000);
                 } else {
                     ((Enemy) fixB.getUserData()).hitOnHead();
-                    Hud.addScore(1000);
+                    HUDWithControls.addScore(1000);
                 }
                 break;*/
         }
