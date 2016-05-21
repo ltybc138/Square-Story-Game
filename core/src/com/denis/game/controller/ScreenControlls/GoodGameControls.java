@@ -59,6 +59,7 @@ public class GoodGameControls {
         Table table = new Table();
         table.setPosition(Assets.V_WIDTH / 2, Assets.V_HEIGHT / 3 * 2);
 
+
         label = new Label("Well done!!!", labelStyle);
         label.setSize(300 / Assets.CPPM, 100 / Assets.CPPM);
 
@@ -121,7 +122,8 @@ public class GoodGameControls {
         table.add(backButton).size(backButton.getWidth(), backButton.getHeight());
         table.add(nextLevelButton).size(nextLevelButton.getWidth(), nextLevelButton.getHeight());
         table.row();
-        table.debug(); // TODO delete later
+
+        stage.addActor(table);
 
         stage.addActor(table);
     }

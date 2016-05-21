@@ -21,10 +21,10 @@ public class Levels {
 
     // checking levels done
     public static boolean isLevelsOpened = true;
-    public static boolean is1LevelOpen = true;
-    public static boolean is2LevelOpen = true;
-    public static boolean is3LevelOpen = true;
-    public static boolean is4LevelOpen = true;
+    public static boolean is1LevelOpen = true ;
+    public static boolean is2LevelOpen = false;
+    public static boolean is3LevelOpen = false;
+    public static boolean is4LevelOpen = false;
     public static boolean is5LevelOpen = false;
     public static boolean is6LevelOpen = false;
     public static boolean is7LevelOpen = false;

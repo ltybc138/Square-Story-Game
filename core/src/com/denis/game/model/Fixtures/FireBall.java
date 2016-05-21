@@ -64,9 +64,7 @@ public class FireBall extends Sprite {
         fdef.filter.maskBits = Bits.GROUND_BIT |
                 Bits.FINISH_BIT |
                 Bits.OBJECT_BIT |
-                Bits.ENEMY_BIT |
-                Bits.DOOR_BIT |
-                Bits.LAVA_BIT;
+                Bits.ENEMY_BIT;
 
         fdef.shape = shape;
         fdef.restitution = 1;

@@ -48,12 +48,6 @@ public class WorldContactListener implements ContactListener{
                 else
                     ((Enemy) fixB.getUserData()).reverseVelocity(true, false);
                 break;
-            case Bits.ENEMY_BIT | Bits.DOOR_BIT:
-                if(fixA.getFilterData().categoryBits == Bits.ENEMY_BIT)
-                    ((Enemy) fixA.getUserData()).reverseVelocity(true, false);
-                else
-                    ((Enemy) fixB.getUserData()).reverseVelocity(true, false);
-                break;
             case Bits.ENEMY_BIT | Bits.ABSTRACT_STOP_BLOCK_BIT:
                 if(fixA.getFilterData().categoryBits == Bits.ENEMY_BIT)
                     ((Enemy) fixA.getUserData()).reverseVelocity(true, false);
@@ -69,17 +63,6 @@ public class WorldContactListener implements ContactListener{
                 Gdx.app.log("PLAYER", "DIED");}
                 break;
 
-            // key collision
-            case Bits.PLAYER_BIT | Bits.KEY_BIT:
-                break;
-
-            // lava collision
-            case Bits.PLAYER_BIT | Bits.LAVA_BIT:
-                break;
-
-            // coin collision
-            case Bits.PLAYER_BIT | Bits.COIN_BIT:
-                break;
 
             // killing enemies using fire balls
             case Bits.FIREBALL_BIT | Bits.ENEMY_BIT:
@@ -91,26 +74,6 @@ public class WorldContactListener implements ContactListener{
                     HUDWithControls.addScore(1000);
                 }
                 break;
-
-            case Bits.PLAYER_BIT | Bits.EXTRA_BULLET:
-                if(fixA.getFilterData().categoryBits == Bits.EXTRA_BULLET) {
-                    ((Enemy) fixA.getUserData()).hitOnHead();
-                    HUDWithControls.addScore(1000);
-                } else {
-                    ((Enemy) fixB.getUserData()).hitOnHead();
-                    HUDWithControls.addScore(1000);
-                }
-
-
-            /*case Bits.FIREBALL_BIT | Bits.ENEMY_HEAD_BIT:
-                if (fixA.getFilterData().categoryBits == Bits.ENEMY_HEAD_BIT) {
-                    ((Enemy) fixA.getUserData()).hitOnHead();
-                    HUDWithControls.addScore(1000);
-                } else {
-                    ((Enemy) fixB.getUserData()).hitOnHead();
-                    HUDWithControls.addScore(1000);
-                }
-                break;*/
         }
 
         Fixture fixC = contact.getFixtureA();

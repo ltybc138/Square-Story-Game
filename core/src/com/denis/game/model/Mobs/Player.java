@@ -128,14 +128,9 @@ public class Player extends Sprite {
         FixtureDef fdef = new FixtureDef();
         fdef.filter.categoryBits = Bits.PLAYER_BIT;
         fdef.filter.maskBits = Bits.GROUND_BIT |
-                Bits.COIN_BIT |
                 Bits.FINISH_BIT |
                 Bits.ENEMY_BIT |
-                Bits.OBJECT_BIT |
-                Bits.KEY_BIT |
-                Bits.DOOR_BIT |
-                Bits.LAVA_BIT |
-                Bits.EXTRA_BULLET;
+                Bits.OBJECT_BIT;
         fdef.shape = shape;
         b2body.createFixture(fdef);
 

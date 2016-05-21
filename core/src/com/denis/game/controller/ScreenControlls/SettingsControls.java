@@ -140,7 +140,6 @@ public class SettingsControls {
         topTable.add(backButton).size(backButton.getWidth(), backButton.getHeight()).padRight(50);
         topTable.add(screenLabel).padRight(30);
         topTable.add().pad(0, 30, 0, 30);
-        topTable.debug(); // TODO delete later
 
         settingsTable.row();
         settingsTable.add(onOffMusicLabel);
@@ -151,7 +150,6 @@ public class SettingsControls {
         if(!gyroscopeAvail)
             settingsTable.add(gyroscopeNotAvail);
         settingsTable.row();
-        settingsTable.debug(); // TODO delete later
 
         stage.addActor(topTable);
         stage.addActor(settingsTable);

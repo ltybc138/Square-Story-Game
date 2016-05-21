@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
@@ -71,9 +70,6 @@ public class BlackSquare extends Enemy {
         // creating fixture definition on goomba
         FixtureDef fdef = new FixtureDef();
 
-        //CircleShape shape = new CircleShape();
-        //shape.setRadius(6 / Assets.PPM);
-
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(6 / Assets.PPM, 6 / Assets.PPM);
 
@@ -84,35 +80,10 @@ public class BlackSquare extends Enemy {
                 Bits.ENEMY_BIT |
                 Bits.OBJECT_BIT |
                 Bits.PLAYER_BIT |
-                Bits.DOOR_BIT |
-                Bits.LAVA_BIT |
                 Bits.FIREBALL_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);
-        /*
-        // initialize goomba like box2d element
-        BodyDef bdef = new BodyDef();
-        bdef.position.set(getX(), getY() + 16 / Assets.PPM);
-        bdef.type = BodyDef.BodyType.DynamicBody;
-        b2body = world.createBody(bdef);
-
-        // creating fixture definition on goomba
-        FixtureDef fdef = new FixtureDef();
-        CircleShape shape = new CircleShape();
-        shape.setRadius(9 / Assets.PPM);
-        fdef.filter.categoryBits = Bits.ENEMY_BIT;
-        fdef.filter.maskBits = Bits.GROUND_BIT |
-                Bits.ABSTRACT_STOP_BLOCK_BIT |
-                Bits.FINISH_BIT |
-                Bits.ENEMY_BIT |
-                Bits.OBJECT_BIT |
-                Bits.PLAYER_BIT |
-                Bits.DOOR_BIT |
-                Bits.LAVA_BIT;
-
-        fdef.shape = shape;
-        b2body.createFixture(fdef).setUserData(this);*/
     }
 
     public void draw(Batch batch) {

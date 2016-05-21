@@ -167,7 +167,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
 
     @Override
     public void show() {
-
     }
 
     private void handleInput(float dt) {
@@ -259,7 +258,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         player.draw(batch);
         for(Enemy enemy : creator.getGoombas())
             enemy.draw(batch);
-        // TODO Random level
         batch.end();
 
         hudWithControls.draw();
@@ -272,7 +270,7 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
         }
 
         // good end level
-        if(Assets.isFinishBlockBroke) {
+        if(Assets.isFinishBlockBroke || hudWithControls.goToMenu) {
             Assets.nextLevel = false;
             if(Assets.map < Assets.lastMap) {
                 Assets.map++;
@@ -292,10 +290,8 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
             PlayerCache.setIsPlayerDied(false);
         }
 
-        // back button pressed
         if(hudWithControls.isBackPressed())
             backToMenu();
-
     }
 
     public void goodGame() {
@@ -342,9 +338,6 @@ public class PlayScreen extends AbstractGameScreen implements Screen {
             case 3:
                 Levels.is3LevelOpen = true;
                 break;
-            case 4:
-                Levels.is4LevelOpen = true;
-            // TODO more levels
         }
     }
 

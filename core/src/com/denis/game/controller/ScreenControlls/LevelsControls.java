@@ -427,7 +427,6 @@ public class LevelsControls {
         table1.add(label);
         table1.add();
         table1.row().padBottom(10);
-        table1.debug(); // TODO delete later
 
         stage.addActor(table1);
 
@@ -449,17 +448,8 @@ public class LevelsControls {
         table.add(level13).size(Assets.SquareButton / Assets.CPPM, Assets.SquareButton / Assets.CPPM).padRight(5);
         table.add(level14).size(Assets.SquareButton / Assets.CPPM, Assets.SquareButton / Assets.CPPM).padRight(5);
         table.add(level15).size(Assets.SquareButton / Assets.CPPM, Assets.SquareButton / Assets.CPPM).padRight(5);
-        table.debug(); // TODO delete later
 
         stage.addActor(table);
-    }
-
-    public boolean isYesButtonPressed() {
-        return yesButtonPressed;
-    }
-
-    public boolean isCancelButtonPressed() {
-        return cancelButtonPressed;
     }
 
     public boolean isBackButtonPressed() {

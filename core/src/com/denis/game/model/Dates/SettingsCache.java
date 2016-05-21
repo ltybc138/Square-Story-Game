@@ -13,7 +13,6 @@ public class SettingsCache {
         prefs.putFloat("sound", 0.5f); // set sound in a half
         prefs.flush();
 
-        Gdx.app.log("SettingsCache", "created"); // TODO delete log
     }
 
     // getters

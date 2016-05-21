@@ -85,7 +85,6 @@ public class GameOverControls {
         table.row().pad(50);
         table.add(backButton).size(backButton.getWidth(), backButton.getHeight());
         table.row();
-        table.debug(); // TODO delete later
 
         stage.addActor(table);
     }

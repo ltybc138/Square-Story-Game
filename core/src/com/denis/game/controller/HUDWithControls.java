@@ -1,6 +1,5 @@
 package com.denis.game.controller;
 
-import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,7 +14,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.denis.game.model.Dates.SettingsCache;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Resource.PlayerStatements;
 import com.denis.game.model.Resource.Textures;
@@ -31,13 +29,10 @@ public class HUDWithControls {
     public float timeCount;
     public static Integer score;
     public static Integer health;
-    public static String level = "1";
 
     private Label countdownLabel;
     public static Label scoreLabel;
     private Label timeLabel;
-    private Label levelLabel;
-    private Label worldLabel;
     private Label playerLabel;
     private Label healthLabel;
     public static Label healthCountLabel;
@@ -47,6 +42,10 @@ public class HUDWithControls {
     public boolean rightPressed;
     public boolean shotPressed;
     public boolean backPressed;
+
+    public static boolean isDialogOppened = false;
+
+    public static boolean goToMenu = false;
 
     public HUDWithControls(SpriteBatch sb) {
 
@@ -193,25 +192,25 @@ public class HUDWithControls {
         table.add(timeTable).expandX();
         table.add(backImage).expandX().right().padRight(10).size(60 / Assets.CPPM, 60 / Assets.CPPM);
         table.row();
-        table.debug();
 
         stage.addActor(table);
 
-        if(Gdx.app.getType() == Application.ApplicationType.Android && !SettingsCache.getIsGyroscopeOn()) {
-            controlsTable.row().pad(5, 10, 10, 5).padTop(50);
-            controlsTable.add(leftImage).size(leftImage.getWidth(), leftImage.getHeight());
-            controlsTable.add(rightImage).size(rightImage.getWidth(), rightImage.getHeight());
-            controlsTable.add().pad(0, 140, 0, 0);
-            controlsTable.add(upImage).size(upImage.getWidth(), upImage.getHeight());
-            controlsTable.add(shotImage).size(shotImage.getWidth(), shotImage.getHeight());
-            controlsTable.row();
+        controlsTable.row().pad(5, 10, 10, 5).padTop(50);
+        controlsTable.add(leftImage).size(leftImage.getWidth(), leftImage.getHeight());
+        controlsTable.add(rightImage).size(rightImage.getWidth(), rightImage.getHeight());
+        controlsTable.add().pad(0, 140, 0, 0);
+        controlsTable.add(upImage).size(upImage.getWidth(), upImage.getHeight());
+        controlsTable.add(shotImage).size(shotImage.getWidth(), shotImage.getHeight());
+        controlsTable.row();
 
-            stage.addActor(controlsTable);
-        }
+        stage.addActor(controlsTable);
+
+
     }
 
     public void draw() {
         stage.draw();
+
     }
 
     public void update(float dt) {
@@ -222,12 +221,8 @@ public class HUDWithControls {
             timeCount = 0;
         }
 
-        if(backPressed)
-            Gdx.app.log("Button", "Pressed");
-    }
-
-    public static void changeLevel(String newLevel) {
-        level = newLevel;
+        scoreLabel.setText(String.format("%04d", score));
+        healthCountLabel.setText(String.format("%03d", health));
     }
 
     public boolean isUpPressed() {

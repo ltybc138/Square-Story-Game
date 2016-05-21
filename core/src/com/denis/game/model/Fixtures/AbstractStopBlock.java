@@ -18,8 +18,5 @@ public class AbstractStopBlock extends InteractiveTileObject {
     @Override
     public void onHeadHit() {
         Gdx.app.log("Abstract block", "Collision");
-        //setCategoryFilter(Bits.DESTROYED_BIT);
-        //getCell().setTile(null);
-        //Hud.addScore(300);
     }
 }

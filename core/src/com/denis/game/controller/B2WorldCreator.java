@@ -10,14 +10,9 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.denis.game.model.Fixtures.Coin;
-import com.denis.game.model.Fixtures.ExtraBullets;
-import com.denis.game.model.Fixtures.Lava;
 import com.denis.game.model.Resource.Assets;
 import com.denis.game.model.Fixtures.AbstractStopBlock;
-import com.denis.game.model.Fixtures.Door;
 import com.denis.game.model.Fixtures.FinishBlock;
-import com.denis.game.model.Fixtures.Key;
 import com.denis.game.model.Mobs.BlackSquare;
 import com.denis.game.model.Resource.Bits;
 import com.denis.game.view.PlayScreen;
@@ -67,41 +62,6 @@ public class B2WorldCreator {
             goombas.add(new BlackSquare(screen, rect.getX() / Assets.PPM, rect.getY() / Assets.PPM));
         }
 
-        /*// Key initialization
-        for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            new Key(screen, rect);
-        }
-
-        // Door initialization
-        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            new Door(screen, rect);
-        }
-
-        // Coin initialization
-        for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            new Coin(screen, rect);
-        }
-
-        // Abstract blocks initialization
-        for(MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            new AbstractStopBlock(screen, rect);
-        }
-
-        // Lava initialization
-        for(MapObject object : map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            new Lava(screen, rect);
-        }*/
-
         // FinishBlock initialization
         for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
@@ -115,13 +75,6 @@ public class B2WorldCreator {
 
             new AbstractStopBlock(screen, rect);
         }
-
-        // Extra bullets blocks initialization
-        /*for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            new ExtraBullets(screen, rect);
-        }*/
     }
 
     public Array<BlackSquare> getGoombas() {

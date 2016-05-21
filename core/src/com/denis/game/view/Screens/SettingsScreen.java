@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.denis.game.controller.ScreenControlls.SettingsControls;
 import com.denis.game.model.Dates.SettingsCache;
-import com.denis.game.model.Dates.WriteSettings;
 import com.denis.game.model.Resource.Textures;
 import com.denis.game.view.AbstractGameScreen;
 
@@ -56,7 +55,6 @@ public class SettingsScreen extends AbstractGameScreen {
             SettingsCache.setIsMusicOn(isMusicOn);
             if(!isMusicOn)
                 MenuScreen.musicDispose();
-            new WriteSettings();
         }
         SettingsCache.setIsGyroscopeOn(isGyroscopeOn);
         game.setScreen(new MenuScreen(game));
